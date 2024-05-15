@@ -43,7 +43,7 @@ print('b')
 shuiro = file_path
 print(shuiro)
 
-murakamisan = 'FLAG_BLOB.png'
+murakamisan = 'source\FLAG_BLOB.png'
 if getattr(sys,'frozen',False):
     im = PhotoImage(file = shuiro)
     print('a')
