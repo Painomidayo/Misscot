@@ -36,19 +36,15 @@ if getattr(sys,'frozen',False):
 else:
     script_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(script_dir,"FLAG_BLOB.png")
-print("aoaoa")
-print(file_path)
-print('b')
-#ファイルの確認
-shuiro = file_path
-print(shuiro)
 
-murakamisan = 'source\FLAG_BLOB.png'
+print(file_path)
+
+
 if getattr(sys,'frozen',False):
-    im = PhotoImage(file = shuiro)
+    im = PhotoImage(file = file_path)
     print('a')
 else:
-    im = PhotoImage(file = murakamisan)
+    im = PhotoImage(file = 'source\FLAG_BLOB.png')
     print('b')
 
 n_im = im.subsample(10,10)
@@ -200,6 +196,8 @@ def misskey():
         
         #note
         note = str(honi.get())
+        if note == "":
+            return messagebox.showinfo(message='文字を入れてね')
         newnote = api.notes_create(text=note,visibility=visi)
         entry1.delete(0,'end')
         noteid = newnote['createdNote']['id']
