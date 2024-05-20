@@ -175,7 +175,11 @@ def misskey():
     datalist = f.readlines()
 
     sitename = datalist[0].rstrip('\n')
-    api = Misskey(sitename)   
+    api = Misskey(sitename)
+
+    if len(datalist) == 1:
+        messagebox.showinfo(message='apiトークンを入力してね')
+
     api.token = datalist[1].rstrip('\n')
     f.close
 
