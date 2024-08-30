@@ -36,19 +36,19 @@ if getattr(sys,'frozen',False):
 else:
     script_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(script_dir,"FLAG_BLOB.png")
-print("aoaoa")
-print(file_path)
-print('b')
-#ファイルの確認
-shuiro = file_path
-print(shuiro)
 
+<<<<<<< HEAD
 murakamisan = 'source\FLAG_BLOB.png'
+=======
+print(file_path)
+
+
+>>>>>>> 70c69112091fe228e54d1c9edfbc9b7be6e2a223
 if getattr(sys,'frozen',False):
-    im = PhotoImage(file = shuiro)
+    im = PhotoImage(file = file_path)
     print('a')
 else:
-    im = PhotoImage(file = murakamisan)
+    im = PhotoImage(file = 'source\FLAG_BLOB.png')
     print('b')
 
 n_im = im.subsample(10,10)
@@ -179,7 +179,11 @@ def misskey():
     datalist = f.readlines()
 
     sitename = datalist[0].rstrip('\n')
-    api = Misskey(sitename)   
+    api = Misskey(sitename)
+
+    if len(datalist) == 1:
+        messagebox.showinfo(message='apiトークンを入力してね')
+
     api.token = datalist[1].rstrip('\n')
     f.close
 
@@ -200,6 +204,8 @@ def misskey():
         
         #note
         note = str(honi.get())
+        if note == "":
+            return messagebox.showinfo(message='文字を入れてね')
         newnote = api.notes_create(text=note,visibility=visi)
         entry1.delete(0,'end')
         noteid = newnote['createdNote']['id']
